@@ -1,0 +1,13 @@
+﻿#mariottHeader {
+    margin-top: 10px;
+    margin-bottom: 0px;
+    background-color:darkslategray;
+}
+
+#mariottHeader h2{
+    font-size: 40px;
+}
+
+    #mariottHeader .subtitle{
+        color: white;
+    }
