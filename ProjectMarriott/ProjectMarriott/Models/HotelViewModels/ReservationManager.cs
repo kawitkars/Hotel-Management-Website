@@ -7,18 +7,91 @@ namespace ProjectMarriott.Models.HotelViewModels
 {
     public class ReservationManager
     {
-        //readonly List<Student> _students = new List<Student>()
-        //{
-        //    new Student { ID = 1, Name = "Dino Konstantopoulos", GPA = 3 },
-        //    new Student { ID = 2, Name = "Bill Gates", GPA = 4 },
-        //    new Student { ID = 3, Name = "Elon Musk", GPA = 4 },
-        //    new Student { ID = 4, Name = "Donald Trump", GPA = 2 },
-        //    new Student { ID = 5, Name = "Vladimir Putin", GPA = 3 },
-        //    new Student { ID = 6, Name = "Emmanuel Macron", GPA = 4 },
-        //    new Student { ID = 7, Name = "Barack Obama", GPA = 4 },
-        //    new Student { ID = 8, Name = "Alexis Tsipras", GPA = 3 },
-        //    new Student { ID = 9, Name = "Xi Jinping", GPA = 4 },
-        //    new Student { ID = 10, Name = "Narendra Modi", GPA = 4 } };
+        readonly List<ReservationModel> _reservations = new List<ReservationModel>()
+        {
+            new ReservationModel{ CheckinDate = DateTime.Now.AddDays(10),
+                                  CheckoutDate =  DateTime.Now.AddDays(11),
+                                  NumberOfAdults = 1,
+                                  NumberOfChildren = 0,
+                                  IsDoubleRoom = true,
+                                  RoomDetails = new List<RoomModel>()
+                                  {
+                                      new RoomModel
+                                      {
+                                          Availability = true,
+                                          RoomType = RoomType.DoubleRoom.ToString(),
+                                          RoomTariff = (double)RoomTariff.DoubleRoom
+                                      }
+                                  },
+                                  CustomerDetails = new CustomerModel
+                                  {
+                                      FirstName = "Neha",
+                                      LastName = "Pednekar",
+                                      EmailAddress = "npednekar9@gmail.com",
+                                      PhoneNumber = "8888888888",
+                                      Address = new AddressModel()
+                                      {
+                                          AddressLine1 = "abcd",
+                                          AddressLine2 = "efgh",
+                                          City = "Boston",
+                                          State = "MA",
+                                          ZipCode = "02215"
+
+                                      }
+                                  }
+
+                                 },
+
+            new ReservationModel{ CheckinDate = DateTime.Now.AddDays(20),
+                                  CheckoutDate =  DateTime.Now.AddDays(25),
+                                  NumberOfAdults = 2,
+                                  NumberOfChildren = 0,
+                                  IsRoyalSuit = true,
+                                  RoomDetails = new List<RoomModel>()
+                                  {
+                                      new RoomModel
+                                      {
+                                          Availability = true,
+                                          RoomType = RoomType.DoubleRoom.ToString(),
+                                          RoomTariff = (double)RoomTariff.DoubleRoom
+                                      }
+                                  },
+                                  CustomerDetails = new CustomerModel
+                                  {
+                                      FirstName = "Sneha",
+                                      LastName = "Kawitkar",
+                                      EmailAddress = "sk@gmail.com",
+                                      PhoneNumber = "7878787878",
+                                      Address = new AddressModel()
+                                      {
+                                          AddressLine1 = "abcd",
+                                          AddressLine2 = "efgh",
+                                          City = "Boston",
+                                          State = "MA",
+                                          ZipCode = "02215"
+
+                                      }
+                                  }
+
+                                 }
+        };
+
+
+        //Get all  the reservation bookings
+        public IEnumerable<ReservationModel> GetAllReservationBookings
+        {
+            get
+            {
+                return _reservations;
+            }
+        }
+
+
+        //Get the reservations by checkin dates
+        public List<ReservationModel> GetReservationsByCheckinDate(DateTime _checkinDate)
+        {
+            return _reservations.Where(x => x.CheckinDate == _checkinDate).ToList();
+        }
 
         //public IEnumerable<Student> GetAll
         //{ get { return _students; } }

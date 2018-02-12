@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ProjectMarriott.Models.HotelViewModels;
 
@@ -22,24 +23,32 @@ namespace ProjectMarriott.Controllers
             return View();
         }
 
-        
+        public IActionResult CustomerHistory()
+        {
+            return View("CustomerHistory");
+        }
+
+        [Authorize]
         public IActionResult Reservation()
         {
             return View("Reservation");
         }
 
+        [Authorize]
         [HttpPost]
         public IActionResult Reservation(ReservationModel reservationModel)
         {
             return View("Reservation", reservationModel);
         }
 
+        [Authorize]
         [HttpPost]
         public IActionResult SaveBookingDates(ReservationModel reservationModel)
         {
             return View("Reservation", reservationModel);
         }
 
+        [Authorize]
         [HttpPost]
         public IActionResult SaveRoomDetails(ReservationModel reservationModel)
         {
@@ -109,12 +118,14 @@ namespace ProjectMarriott.Controllers
             return View("Reservation", reservationModel);
         }
 
+        [Authorize]
         [HttpPost]
         public IActionResult SubmitCustomerData(ReservationModel reservationModel)
         {
             if (ModelState.IsValid)
             {
                 //Do nothing currently
+                
             }
 
             return View("Reservation", reservationModel);
