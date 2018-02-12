@@ -1,0 +1,161 @@
+﻿@model ProjectMarriott.Models.HotelViewModels.ReservationModel
+
+@using (Html.BeginForm("SubmitCustomerData", "Hotel", FormMethod.Post,
+new { enctype = "multipart/form-data", id = "submitCustomerData" }))
+{
+    if (Model != null)
+    {
+        @Html.HiddenFor(m => m.CheckinDate, Model.CheckinDate)
+        @Html.HiddenFor(m => m.CheckoutDate, Model.CheckoutDate)
+        @Html.HiddenFor(m => m.NumberOfAdults, Model.NumberOfAdults)
+        @Html.HiddenFor(m => m.NumberOfChildren, Model.NumberOfChildren)
+        @Html.HiddenFor(m => m.TotalCost, Model.TotalCost)
+        if (Model.RoomDetails != null)
+        {
+            for (var i = 0; i < Model.RoomDetails.Count; i++)
+            {
+                @Html.HiddenFor(m => m.RoomDetails[i].RoomType)
+                @Html.HiddenFor(m => m.RoomDetails[i].RoomTariff)
+            }
+        }
+    }
+
+    <div class="reservation-summary col-md-4">
+        <h4>Reservation <b>Summary</b></h4>
+        <div class="info-boxes">
+            @if (Model != null && Model.RoomDetails != null)
+            {
+                <div class="title"><span>Reservation <b>Info</b></span></div>
+                <ul style="list-style: none">
+                    <li>
+                        <div class="info">Check in :</div>
+                        <div class="value">@Model.CheckinDate</div>
+                    </li>
+                    <li>
+                        <div class="info">Check out :</div>
+                        <div class="value">@Model.CheckoutDate</div>
+                    </li>
+                    <li>
+                        <div class="info">Adult :</div>
+                        <div class="value">@Model.NumberOfAdults</div>
+                    </li>
+                    <li>
+                        <div class="info">Child :</div>
+                        <div class="value">@Model.NumberOfChildren</div>
+                    </li>
+                </ul>
+                <div class="title"><span>Room <b>Info</b></span></div>
+                @foreach (var room in Model.RoomDetails)
+                {
+                    <ul style="list-style:none">
+                        <li>
+                            <div class="info">
+                                @room.RoomType
+                            </div>
+                            <div class="value">$@room.RoomTariff</div>
+                        </li>
+                    </ul>
+                }
+                <div class="total-cost">
+                    <div class="info">Total Cost :</div>
+                    <div class="value">$@Model.TotalCost</div>
+                </div>
+            }
+        </div>
+    </div>
+
+
+
+    <div class="reservation-info col-md-12 col-lg-12">
+        <h4>Reservation <b>Info</b></h4>
+        <div class="col-md-8">
+            <div class="field-container">
+                @Html.TextBoxFor(m => m.CustomerDetails.FirstName,
+                                                     new
+                                                     {
+                                                         @class = "form-control",
+                                                         @placeholder = "First Name",
+                                                         @style = "width: 50%"
+                                                     })<!-- First Name Field -->
+            </div>
+            <div class="field-container">
+                @Html.TextBoxFor(m => m.CustomerDetails.LastName,
+                                                     new
+                                                     {
+                                                         @class = "form-control",
+                                                         @placeholder = "Last Name",
+                                                         @style = "width: 50%"
+                                                     })<!-- Last Name Field -->
+            </div>
+            <div class="field-container">
+                @Html.TextBoxFor(m => m.CustomerDetails.EmailAddress,
+                                                     new
+                                                     {
+                                                         @class = "form-control",
+                                                         @placeholder = "Email Address",
+                                                         @style = "width: 50%"
+                                                     })<!-- Email Field -->
+            </div>
+            <div class="field-container">
+                @Html.TextBoxFor(m => m.CustomerDetails.PhoneNumber,
+                                                     new
+                                                     {
+                                                         @class = "form-control",
+                                                         @placeholder = "Phone Number",
+                                                         @style = "width: 50%"
+                                                     })<!-- Phone Field -->
+            </div>
+            <div class="field-container">
+                @Html.TextBoxFor(m => m.CustomerDetails.Address.AddressLine1,
+                                                     new
+                                                     {
+                                                         @class = "form-control",
+                                                         @placeholder = "Address Line 1",
+                                                         @style = "width: 50%"
+                                                     })<!-- Address Line1 Field -->
+            </div>
+            <div class="field-container">
+                @Html.TextBoxFor(m => m.CustomerDetails.Address.AddressLine2,
+                                                     new
+                                                     {
+                                                         @class = "form-control",
+                                                         @placeholder = "Address Line 2",
+                                                         @style = "width: 50%"
+                                                     })<!-- Address Line2 Field -->
+            </div>
+            <div class="field-container">
+                @Html.TextBoxFor(m => m.CustomerDetails.Address.State,
+                                                     new
+                                                     {
+                                                         @class = "form-control",
+                                                         @placeholder = "City",
+                                                         @style = "width: 50%"
+                                                     })<!-- City Field -->
+                <!-- City Field -->
+            </div>
+            <div class="field-container">
+                @Html.TextBoxFor(m => m.CustomerDetails.Address.State,
+                                                     new
+                                                     {
+                                                         @class = "form-control",
+                                                         @placeholder = "State",
+                                                         @style = "width: 50%"
+                                                     })<!-- State Field -->
+            </div>
+            <div class="field-container">
+                @Html.TextBoxFor(m => m.CustomerDetails.Address.ZipCode,
+                                                     new
+                                                     {
+                                                         @class = "form-control",
+                                                         @placeholder = "Zip Code",
+                                                         @style = "width: 50%"
+                                                     })<!-- Zip Code Field -->
+            </div>
+
+            <div>
+                <button type="button" id="next3" class="btn btn-default">Submit Form and Make Payment >></button>
+            </div>
+        </div>
+    </div>
+    <!-- End of Guest Info form -->
+}

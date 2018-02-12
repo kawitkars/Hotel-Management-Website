@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -9,9 +10,36 @@ namespace ProjectMarriott.Models.HotelViewModels
     {
         public string RoomType { get; set; }
 
-        public string RoomTariff { get; set; }
+        public double RoomTariff { get; set; }
 
         public bool Availability { get; set; }
 
     }
+
+    public enum RoomType
+    {
+        [DisplayName("Single Room")]
+        SingleRoom,
+        [DisplayName("Double Room")]
+        DoubleRoom,
+        [DisplayName("Deluxe One Bedroom Suite")]
+        DeluxeOneBedroomSuite,
+        [DisplayName("Deluxe Two Bedroom Suite")]
+        DeluxeTwoBedroomSuite,
+        [DisplayName("Royal Suite")]
+        RoyalSuit,
+        [DisplayName("King Suite")]
+        KingSuit
+    }
+
+    public enum RoomTariff
+    {
+        SingleRoom = 240,
+        DoubleRoom = 350,
+        DeluxeOneBedroomSuite = 440,
+        DeluxeTwoBedroomSuite = 480,
+        RoyalSuit = 530,
+        KingSuit = 620
+    }
+
 }

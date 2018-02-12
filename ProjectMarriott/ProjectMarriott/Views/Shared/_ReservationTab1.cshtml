@@ -1,0 +1,41 @@
+﻿@model ProjectMarriott.Models.HotelViewModels.ReservationModel
+
+@using (Html.BeginForm("SaveBookingDates", "Hotel", FormMethod.Post,
+    new { enctype = "multipart/form-data", id = "saveDateForm" }))
+{
+<div class="input-daterange booking-dates">
+    <div class="booking-date-fields-container col-lg-3">
+        <!-- Do NOT change the "booking-date-fields-container" Class -->
+        <h5><b>Check in</b> Date: </h5>
+        @Html.TextBoxFor(m => m.CheckinDate, "mm/dd/yyyy",
+                 new { @class = "form-control datepicker" })
+    </div>
+    <div class="booking-date-fields-container col-lg-3">
+        <!-- Do NOT change the "booking-date-fields-container" Class -->
+        <h5><b>Check out</b> Date: </h5>
+        @Html.TextBoxFor(m => m.CheckoutDate, "mm/dd/yyyy",
+                 new { @class = "form-control datepicker" })
+    </div>
+    <br />
+    <div class="booking-date-fields-container col-lg-12">
+        <!-- Do NOT change the "booking-date-fields-container" Class -->
+        <h5><b>Other </b> Details: </h5>
+        <p>Adults </p>
+        @Html.TextBoxFor(m => m.NumberOfAdults, "",
+                 new { @class = "form-control", @type = "number" , @style = "width: 100px;"})
+        <br />
+        <p>Children </p>
+        @Html.TextBoxFor(m => m.NumberOfChildren, "",
+                 new { @class = "form-control", @type = "number", @style = "width: 100px;" })
+        <br />
+
+    </div>
+    <div class="col-lg-12">
+        @*<button type="submit" id="next1" class="btn btn-default">Next</button>*@
+        <input type="submit" id="next1" class="btn btn-default" value="Save and Continue >>">
+    </div>
+</div>
+    
+}
+
+

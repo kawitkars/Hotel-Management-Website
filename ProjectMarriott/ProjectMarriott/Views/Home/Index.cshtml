@@ -1,6 +1,70 @@
-﻿@{
+﻿@model ProjectMarriott.Models.HotelViewModels.ReservationModel;
+
+@{
     ViewData["Title"] = "Home Page";
 }
+
+<div class="container" style="background:linear-gradient(to right, grey, black, grey);">
+    @*<div class="jumbotron" id="booking_jumbotron">*@
+    <div class="col-lg-12" style="align-self:center">
+        <h5 id="customFont">Make a Reservation</h5>
+    </div>
+    
+    <form class="form-inline" id="reservation-form" method="post"
+          action="@Url.Action("Reservation", "Hotel")">
+
+        <div class="col-lg-3 form-group" style="margin-top: 10px;">
+            <div>
+                @Html.Label("CheckinDate", "Check In: ")
+                @Html.TextBoxFor(m => m.CheckinDate, "",
+            new { @class = "form-control datepicker" })
+                @Html.ValidationMessageFor(m => m.CheckinDate)
+            </div>
+        </div>
+
+        <div class="col-lg-3 form-group" style="margin-top: 10px;">
+            @Html.Label("CheckoutDate", "Check Out: ")
+            @Html.TextBoxFor(m => m.CheckoutDate, "",
+           new { @class = "form-control datepicker" })
+            @Html.ValidationMessageFor(m => m.CheckoutDate)
+        </div>
+
+        <div class="col-lg-3 form-group" style="margin-top: 10px;">
+            @Html.Label("NumberOfAdults", "Adults: ")
+            @Html.TextBoxFor(m => m.NumberOfAdults, "", new
+    {
+        @class = "form-control",
+        @type = "number",
+        @style = "width: 50%",
+        @min = 0,
+        @max = 4
+    })
+            @Html.ValidationMessageFor(m => m.NumberOfAdults)
+        </div>
+
+
+        <div class="col-lg-3 form-group" style="margin-top: 10px;">
+            @Html.Label("NumberOfChildren", "Children: ")
+            @Html.TextBoxFor(m => m.NumberOfChildren, "", new
+    {
+        @class = "form-control",
+        @type = "number",
+        @style = "width: 50%",
+        @min = 0,
+        @max = 4
+    })
+            @Html.ValidationMessageFor(m => m.NumberOfChildren)
+        </div>
+
+        <div class="col-lg-12 form-group" style="margin-top: 10px; margin-bottom: 10px; align-self: center">
+            <input id="" type="submit" style="letter-spacing: 2px" value="Book Now"
+                   class="btn btn-default" />
+        </div>
+
+
+    </form>
+    @* </div> *@
+</div>
 
 <div class="container">
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -12,7 +76,7 @@
         </ol>
 
         <!-- Wrapper for slides -->
-        <div class="carousel-inner">
+        <div class="carousel-inner" id="main-slider">
             <div class="item active">
                 <img src="~/images/Home/marriott_carousel2.jpg" alt="carouselImage1">
             </div>
@@ -138,7 +202,7 @@
                         <li>Sport Activities</li>
                     </ul>
                 </div>
-                <a href="#" class="btn btn-default">Select Package</a>
+                <a href="#" class="btn btn-default">View Packages</a>
             </div>
         </div>
 
@@ -156,7 +220,7 @@
                         <li>Sport Activities</li>
                     </ul>
                 </div>
-                <a href="#" class="btn btn-default">Select Package</a>
+                <a href="#" class="btn btn-default">View Packages</a>
             </div>
         </div>
 
@@ -174,7 +238,7 @@
                         <li>Sport Activities</li>
                     </ul>
                 </div>
-                <a href="#" class="btn btn-default">Select Package</a>
+                <a href="#" class="btn btn-default">View Packages</a>
             </div>
         </div>
 

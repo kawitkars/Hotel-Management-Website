@@ -20,8 +20,12 @@ namespace ProjectMarriott.Models.HotelViewModels
 
         public AddressModel Address { get; set; }
 
-        public ReservationModel ReservationInfo { get; set; }
+        [DataType(DataType.PhoneNumber)]
+        public string PhoneNumber { get; set; }
 
+        //public ReservationModel ReservationInfo { get; set; }
+
+        [DataType(DataType.EmailAddress)]
         public string EmailAddress { get; set; }
     }
 }

@@ -19,4 +19,6 @@ namespace ProjectMarriott.Models.HotelViewModels
 
         public string Country { get; set; }
     }
+
+
 }
