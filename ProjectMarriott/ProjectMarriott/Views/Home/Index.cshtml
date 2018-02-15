@@ -13,55 +13,80 @@
     <form class="form-inline" id="reservation-form" method="post"
           action="@Url.Action("Reservation", "Hotel")">
 
-            <div class="col-lg-4 form-group" style="margin-top: 10px;">
-                <div>
-                    @Html.Label("CheckinDate", "Check In: ")
-                    @Html.TextBoxFor(m => m.CheckinDate, "",
-          new { @class = "form-control datepicker", @style = "width: 50%" })
-                    @Html.ValidationMessageFor(m => m.CheckinDate, "Checkin Date is required", new { @class = "text-danger" })
-                </div>
+        <div class="col-lg-2 form-group" style="margin-top: 10px;">
+            <div>
+                @Html.Label("CheckinDate", "Check In: ")
+                @Html.TextBoxFor(m => m.CheckinDate, "",
+        new { @class = "form-control datepicker", @style = "width: 100%" })
+                @Html.ValidationMessageFor(m => m.CheckinDate, "Checkin Date is required", new { @class = "text-danger" })
             </div>
+        </div>
 
-            <div class="col-lg-4 form-group" style="margin-top: 10px;">
-                @Html.Label("CheckoutDate", "Check Out: ")
-                @Html.TextBoxFor(m => m.CheckoutDate, "",
-             new { @class = "form-control datepicker", @style = "width: 50%" })
-                @Html.ValidationMessageFor(m => m.CheckoutDate, "Checkout Date is required", new { @class = "text-danger" })
-            </div>
+        <div class="col-lg-2 form-group" style="margin-top: 10px;">
+            @Html.Label("CheckoutDate", "Check Out: ")
+            @Html.TextBoxFor(m => m.CheckoutDate, "",
+           new { @class = "form-control datepicker", @style = "width: 100%" })
+            @Html.ValidationMessageFor(m => m.CheckoutDate, "Checkout Date is required", new { @class = "text-danger" })
+        </div>
 
-            <div class="col-lg-2 form-group" style="margin-top: 10px;">
-                @Html.Label("NumberOfAdults", "Adults: ")
-                @Html.TextBoxFor(m => m.NumberOfAdults, "", new
-            {
-                @class = "form-control",
-                @type = "number",
-                @style = "width: 50%",
-                @min = 0,
-                @max = 4
-            })
-                @Html.ValidationMessageFor(m => m.NumberOfAdults)
-            </div>
+        <div class="col-lg-2 form-group" style="margin-top: 10px;">
+            @Html.Label("NumberOfAdults", "Adults: ")
+            @Html.TextBoxFor(m => m.NumberOfAdults, "", new
+    {
+        @class = "form-control",
+        @type = "number",
+        @style = "width: 100%",
+        @min = 1,
+        @max = 4
+    })
+            @Html.ValidationMessageFor(m => m.NumberOfAdults, 
+           "Enter number of adults", new { @class = "text-danger" })
+        </div>
 
 
-            <div class="col-lg-2 form-group" style="margin-top: 10px;">
-                @Html.Label("NumberOfChildren", "Children: ")
-                @Html.TextBoxFor(m => m.NumberOfChildren, "", new
-            {
-                @class = "form-control",
-                @type = "number",
-                @style = "width: 50%",
-                @min = 0,
-                @max = 4
-            })
-                @Html.ValidationMessageFor(m => m.NumberOfChildren)
-            </div>
+        <div class="col-lg-2 form-group" style="margin-top: 10px;">
+            @Html.Label("NumberOfChildren", "Children: ")
+            @Html.TextBoxFor(m => m.NumberOfChildren, "", new
+    {
+        @class = "form-control",
+        @type = "number",
+        @style = "width: 100%",
+        @min = 0,
+        @max = 4
+    })
+            @Html.ValidationMessageFor(m => m.NumberOfChildren,
+        "Enter number of children", new { @class = "text-danger" })
+        </div>
 
-            <div class="col-lg-12 form-group" style="margin-top: 10px; margin-bottom: 10px; align-self: center">
-                <input id="" type="submit" style="letter-spacing: 2px" value="Book Now"
-                       class="btn btn-default" />
-            </div>
+        <div class="col-lg-2 form-group" style="margin-top: 10px;">
+            @Html.Label("NumberOfRooms", "Number of rooms: ")
 
-        </form>
+            @Html.TextBoxFor(m => m.NumberOfRooms, "", new
+    {
+        @class = "form-control",
+        @type = "number",
+        @style = "width: 100%",
+        @min = 1,
+        @max = 3
+    })
+            @Html.ValidationMessageFor(m => m.NumberOfRooms,
+        "Enter number of rooms. Max 3 can be entered", new { @class = "text-danger" })
+        </div>
+
+        <div class="col-lg-2 form-group" style="margin-top: 10px;">
+         
+        </div>
+
+        <div class="col-lg-12 form-group" style="margin-top: 10px; margin-bottom: 10px; align-self: center">
+            <input id="" type="submit" style="letter-spacing: 2px" value="Check Availability"
+                   class="btn btn-default" />
+        </div>
+        <div class="col-lg-12 form-group" style="margin-top: 10px; margin-bottom: 10px; align-self: center">
+            <input id="" type="submit" style="letter-spacing: 2px" value="Book Now"
+                   class="btn btn-default" />
+        </div>
+
+    </form>
         @* </div> *@
 </div>
 

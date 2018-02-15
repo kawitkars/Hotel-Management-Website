@@ -14,6 +14,8 @@ namespace ProjectMarriott.Models.HotelViewModels
 
         public bool Availability { get; set; }
 
+        public int RoomsAvailable { get; set; }
+
     }
 
     public enum RoomType
@@ -40,6 +42,16 @@ namespace ProjectMarriott.Models.HotelViewModels
         DeluxeTwoBedroomSuite = 480,
         RoyalSuit = 530,
         KingSuit = 620
+    }
+
+    public enum RoomsAvailable
+    {
+        SingleRoom = 20,
+        DoubleRoom = 10,
+        DeluxeOneBedroomSuite = 5,
+        DeluxeTwoBedroomSuite = 5,
+        RoyalSuit = 2,
+        KingSuit = 2
     }
 
 }

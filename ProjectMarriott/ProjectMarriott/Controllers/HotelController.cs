@@ -34,8 +34,8 @@ namespace ProjectMarriott.Controllers
             return View("Reservation");
         }
 
-        [Authorize]
         [HttpPost]
+        [Authorize]
         public IActionResult Reservation(ReservationModel reservationModel)
         {
             return View("Reservation", reservationModel);
@@ -124,8 +124,8 @@ namespace ProjectMarriott.Controllers
         {
             if (ModelState.IsValid)
             {
-                //Do nothing currently
-                
+                //Generate a booking ID 
+                reservationModel.BookingID = HelperMethods.HelperMethods.RandomString(10);
             }
 
             return View("Reservation", reservationModel);

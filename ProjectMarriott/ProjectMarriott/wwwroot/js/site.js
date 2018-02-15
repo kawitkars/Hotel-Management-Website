@@ -51,24 +51,29 @@ $(document).ready(function () {
     }
 });
 
+
+
 $(function () {
 
     $('#next1').click(function (e) {
         e.preventDefault();
         $("#saveDateForm").submit();
         $('#booking-tabs a[href="#booking-choose-room"]').tab('show');
+        $('#saveDateForm input').attr('disabled', 'disabled');
     });
 
     $('#next2').click(function (e) {
         e.preventDefault();
         $("#saveRoomForm").submit();
         $('#booking-tabs a[href="#booking-reservation"]').tab('show');
+        $('#saveRoomForm input').attr('disabled', 'disabled');
     });
 
     $('#next3').click(function (e) {
         e.preventDefault();
         $("#submitCustomerData").submit();
         $('#booking-tabs a[href="#booking-confirmation"]').tab('show');
+        $('#submitCustomerData input').attr('disabled', 'disabled');
     });
 
 });

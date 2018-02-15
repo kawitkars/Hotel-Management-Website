@@ -9,7 +9,7 @@ namespace ProjectMarriott.Models.HotelViewModels
 {
     public class ReservationModel
     {
-        public int BookingID { get; set; }
+        public String BookingID { get; set; }
 
         public List<RoomModel> RoomDetails { get; set; }
 
@@ -45,5 +45,7 @@ namespace ProjectMarriott.Models.HotelViewModels
         public bool IsKingSuit { get; set; }
 
         public double TotalCost { get; set; }
+
+        public double NumberOfRooms { get; set; }
     }
 }

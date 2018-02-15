@@ -18,6 +18,10 @@
     font-size: 0.8em;
 }
 
+#loginurllinks {
+    color: #c5a46d;
+}
+
 #checkoutDate {
     float: none;
 } 
