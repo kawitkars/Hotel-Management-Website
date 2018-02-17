@@ -1,37 +1,42 @@
-﻿@model ProjectMarriott.Models.HotelViewModels.ReservationModel
+﻿@using ProjectMarriott.Models.HotelViewModels;
+@model ProjectMarriott.Models.HotelViewModels.ReservationModel
 
 
+    <div class="internal-pages trans-header sticky booking-page">
 
-<div class="internal-pages trans-header sticky booking-page">
+        <!-- Internal Page Header -->
+        <div class="internal-page-title about-page">
+            <ol class="breadcrumb">
+                <!-- Internal Page Breadcrumb -->
+                <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                <li class="active">Customer History</li>
+            </ol>
+        </div>
 
-    <!-- Internal Page Header -->
-    <div class="internal-page-title about-page">
-        <ol class="breadcrumb">
-            <!-- Internal Page Breadcrumb -->
-            <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-            <li class="active">Customer History</li>
-        </ol>
-    </div>
+        <div id="booking-page-content">
+            <div class="booking-container container">
 
-    <div id="booking-page-content">
-        <div class="booking-container container">
-
-            <div class="heading-box">
-                <h2>Customer <span>History</span></h2>
-            </div>
-            <div class="main-booking-description">
+                <div class="heading-box">
+                    <h2>Customer <span>History</span></h2>
+                </div>
+                <div class="main-booking-description">
+                    @if (Model != null && Model.CustomerDetails != null)
+                    {
                 <ul>
-                    <li></li>
-                    <li></li>
+                    <li>@Model.CustomerDetails.FirstName</li>
+                    <li>@Model.CustomerDetails.LastName</li>
                     <li></li>
                     <li></li>
                     <li></li>
                 </ul>
-            </div>
 
+                    }
+
+                </div>
+
+            </div>
         </div>
     </div>
-</div>
 
 
 

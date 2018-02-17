@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ProjectMarriott.Models.HotelViewModels
+namespace ProjectMarriott.ProjectMarriottWebAPI.Models
 {
     public class RoomModel
     {
@@ -18,34 +17,29 @@ namespace ProjectMarriott.Models.HotelViewModels
             RoomsAvailable = roomsAvailable;
         }
 
-        [DisplayName("Room Type")]
         public RoomType RoomType { get; set; }
 
-        [DisplayName("Room Tariff")]
         public double RoomTariff { get; set; }
 
-        [DisplayName("Availability")]
         public bool Availability { get; set; }
 
-        [DisplayName("Number of Rooms Available")]
         public int RoomsAvailable { get; set; }
 
     }
 
-    [Flags]
     public enum RoomType
     {
-        [Display(Name = "Single Room")]
+        [DisplayName("Single Room")]
         SingleRoom,
-        [Display(Name = "Double Room")]
+        [DisplayName("Double Room")]
         DoubleRoom,
-        [Display(Name = "Deluxe One Bedroom Room")]
+        [DisplayName("Deluxe One Bedroom Suite")]
         DeluxeOneBedroomSuite,
-        [Display(Name = "Deluxe Two Bedroom Room")]
+        [DisplayName("Deluxe Two Bedroom Suite")]
         DeluxeTwoBedroomSuite,
-        [Display(Name = "Royal Suit")]
+        [DisplayName("Royal Suite")]
         RoyalSuit,
-        [Display(Name = "King Suit")]
+        [DisplayName("King Suite")]
         KingSuit
     }
 

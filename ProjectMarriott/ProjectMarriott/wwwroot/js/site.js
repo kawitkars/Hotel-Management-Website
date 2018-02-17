@@ -83,7 +83,7 @@ $(function () {
         localStorage.removeItem('activeTab');
 }); 
 
-$('.datepicker').datepicker();
+    $('.datepicker').datepicker();
 
 //$('#saveDateBtn').click(function () {
 //    $("#saveForm").submit();

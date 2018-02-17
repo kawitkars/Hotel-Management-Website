@@ -17,11 +17,8 @@ namespace ProjectMarriott.Models.HotelViewModels
                                   RoomDetails = new List<RoomModel>()
                                   {
                                       new RoomModel
-                                      {
-                                          Availability = true,
-                                          RoomType = RoomType.DoubleRoom.ToString(),
-                                          RoomTariff = (double)RoomTariff.DoubleRoom
-                                      }
+                                      (RoomType.DoubleRoom, (double)RoomTariff.DoubleRoom, true, 
+                                          (int)RoomsAvailable.DoubleRoom)  
                                   },
                                   CustomerDetails = new CustomerModel
                                   {
@@ -50,11 +47,10 @@ namespace ProjectMarriott.Models.HotelViewModels
                                   RoomDetails = new List<RoomModel>()
                                   {
                                       new RoomModel
-                                      {
-                                          Availability = true,
-                                          RoomType = RoomType.DoubleRoom.ToString(),
-                                          RoomTariff = (double)RoomTariff.DoubleRoom
-                                      }
+                                      (   RoomType.SingleRoom, 
+                                          (double)RoomTariff.SingleRoom, 
+                                          true, 
+                                          (int)RoomsAvailable.SingleRoom)
                                   },
                                   CustomerDetails = new CustomerModel
                                   {
