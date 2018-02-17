@@ -39,7 +39,6 @@ namespace ProjectMarriott.Controllers
             return View("Reservation", reservationModel);
         }
 
-        [Authorize]
         [HttpPost]
         public IActionResult SaveBookingDates(ReservationModel reservationModel)
         {
@@ -59,33 +58,39 @@ namespace ProjectMarriott.Controllers
                 {
                     var roomModel = new RoomModel(RoomType.SingleRoom, (double)RoomTariff.SingleRoom,
                         true, (int)RoomsAvailable.SingleRoom);
+                    reservationModel.RoomDetails.Add(roomModel);
                 }
                 if (reservationModel.IsDoubleRoom == true)
                 {
                     var roomModel = new RoomModel(RoomType.DoubleRoom, (double)RoomTariff.DoubleRoom,
                         true, (int)RoomsAvailable.DoubleRoom);
+                    reservationModel.RoomDetails.Add(roomModel);
                 }
                 if (reservationModel.IsDeluxeOneBedroom == true)
                 {
-                    var roomModel = new RoomModel(RoomType.DeluxeOneBedroomSuite, 
+                    var roomModel = new RoomModel(RoomType.DeluxeOneBedroomSuite,
                         (double)RoomTariff.DeluxeOneBedroomSuite,
                         true, (int)RoomsAvailable.DeluxeOneBedroomSuite);
+                    reservationModel.RoomDetails.Add(roomModel);
                 }
                 if (reservationModel.IsDeluxeTwoBedroom == true)
                 {
-                    var roomModel = new RoomModel(RoomType.DeluxeTwoBedroomSuite, 
+                    var roomModel = new RoomModel(RoomType.DeluxeTwoBedroomSuite,
                         (double)RoomTariff.DeluxeTwoBedroomSuite,
                         true, (int)RoomsAvailable.DeluxeTwoBedroomSuite);
+                    reservationModel.RoomDetails.Add(roomModel);
                 }
                 if (reservationModel.IsRoyalSuit == true)
                 {
                     var roomModel = new RoomModel(RoomType.RoyalSuit, (double)RoomTariff.RoyalSuit,
                         true, (int)RoomsAvailable.RoyalSuit);
+                    reservationModel.RoomDetails.Add(roomModel);
                 }
                 if (reservationModel.IsKingSuit == true)
                 {
                     var roomModel = new RoomModel(RoomType.KingSuit, (double)RoomTariff.KingSuit,
                         true, (int)RoomsAvailable.KingSuit);
+                    reservationModel.RoomDetails.Add(roomModel);
                 }
 
                 if (reservationModel != null && reservationModel.RoomDetails != null &&
@@ -119,6 +124,93 @@ namespace ProjectMarriott.Controllers
             HttpContext.Session.SetObjectAsJson("ReservationModel", reservationModel);
             return View("Reservation", reservationModel);
         }
+
+        //[Authorize]
+        //[HttpPost]
+        //public IActionResult SaveBookingDates(ReservationModel reservationModel)
+        //{
+        //    return View("Reservation", reservationModel);
+        //}
+
+        //[Authorize]
+        //[HttpPost]
+        //public IActionResult SaveRoomDetails(ReservationModel reservationModel)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        reservationModel.RoomDetails = new List<RoomModel>();
+        //        reservationModel.CustomerDetails = new CustomerModel();
+        //        reservationModel.CustomerDetails.Address = new AddressModel();
+        //        if (reservationModel.IsSingleRoom == true)
+        //        {
+        //            var roomModel = new RoomModel(RoomType.SingleRoom, (double)RoomTariff.SingleRoom,
+        //                true, (int)RoomsAvailable.SingleRoom);
+        //            reservationModel.RoomDetails.Add(roomModel);
+        //        }
+        //        if (reservationModel.IsDoubleRoom == true)
+        //        {
+        //            var roomModel = new RoomModel(RoomType.DoubleRoom, (double)RoomTariff.DoubleRoom,
+        //                true, (int)RoomsAvailable.DoubleRoom);
+        //            reservationModel.RoomDetails.Add(roomModel);
+        //        }
+        //        if (reservationModel.IsDeluxeOneBedroom == true)
+        //        {
+        //            var roomModel = new RoomModel(RoomType.DeluxeOneBedroomSuite, 
+        //                (double)RoomTariff.DeluxeOneBedroomSuite,
+        //                true, (int)RoomsAvailable.DeluxeOneBedroomSuite);
+        //            reservationModel.RoomDetails.Add(roomModel);
+        //        }
+        //        if (reservationModel.IsDeluxeTwoBedroom == true)
+        //        {
+        //            var roomModel = new RoomModel(RoomType.DeluxeTwoBedroomSuite, 
+        //                (double)RoomTariff.DeluxeTwoBedroomSuite,
+        //                true, (int)RoomsAvailable.DeluxeTwoBedroomSuite);
+        //            reservationModel.RoomDetails.Add(roomModel);
+        //        }
+        //        if (reservationModel.IsRoyalSuit == true)
+        //        {
+        //            var roomModel = new RoomModel(RoomType.RoyalSuit, (double)RoomTariff.RoyalSuit,
+        //                true, (int)RoomsAvailable.RoyalSuit);
+        //            reservationModel.RoomDetails.Add(roomModel);
+        //        }
+        //        if (reservationModel.IsKingSuit == true)
+        //        {
+        //            var roomModel = new RoomModel(RoomType.KingSuit, (double)RoomTariff.KingSuit,
+        //                true, (int)RoomsAvailable.KingSuit);
+        //            reservationModel.RoomDetails.Add(roomModel);
+        //        }
+
+        //        if (reservationModel != null && reservationModel.RoomDetails != null &&
+        //        reservationModel.RoomDetails.Count > 0)
+        //        {
+        //            double totalCostofBooking = 0.0;
+
+        //            foreach (var room in reservationModel.RoomDetails)
+        //            {
+        //                totalCostofBooking += (double)room.RoomTariff;
+        //            }
+
+        //            reservationModel.TotalCost = totalCostofBooking;
+        //        }
+
+        //    }
+
+        //    return View("Reservation", reservationModel);
+        //}
+
+        //[Authorize]
+        //[HttpPost]
+        //public IActionResult SubmitCustomerData(ReservationModel reservationModel)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        //Generate a booking ID 
+        //        reservationModel.BookingID = HelperMethods.HelperMethods.RandomString(10);
+        //    }
+
+        //    HttpContext.Session.SetObjectAsJson("ReservationModel", reservationModel);
+        //    return View("Reservation", reservationModel);
+        //}
 
         [Authorize]
         [HttpGet]
