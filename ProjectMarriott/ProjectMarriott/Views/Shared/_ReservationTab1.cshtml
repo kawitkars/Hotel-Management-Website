@@ -1,25 +1,26 @@
 ﻿@model ProjectMarriott.Models.HotelViewModels.ReservationModel
 
 @using (Html.BeginForm("SaveBookingDates", "Hotel", FormMethod.Post,
-   new { enctype = "multipart/form-data", id = "saveDateForm" }))
+  new { @*enctype = "multipart/form-data",*@ id = "saveDateForm" }))
 {
     @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
     <div class="input-daterange booking-dates">
         <div class="booking-date-fields-container col-md-3 col-md-offset-2">
             <!-- Do NOT change the "booking-date-fields-container" Class -->
             @Html.Label("CheckinDate", "Check In: ")
             @Html.TextBoxFor(m => m.CheckinDate, "",
-                         new { @class = "form-control datepicker", @style = "width: 100%" })
+                              new { @class = "form-control datepicker", @style = "width: 100%" })
             @Html.ValidationMessageFor(m => m.CheckinDate, "Checkin Date is required",
-                               new { @class = "text-danger" })
+                                    new { @class = "text-danger" })
         </div>
         <div class="booking-date-fields-container col-md-3  col-md-offset-2">
             <!-- Do NOT change the "booking-date-fields-container" Class -->
             @Html.Label("CheckoutDate", "Check Out: ")
             @Html.TextBoxFor(m => m.CheckoutDate, "",
-                                new { @class = "form-control datepicker", @style = "width: 100%" })
+                                     new { @class = "form-control datepicker", @style = "width: 100%" })
             @Html.ValidationMessageFor(m => m.CheckoutDate, "Checkout Date is required",
-                               new { @class = "text-danger" })
+                                    new { @class = "text-danger" })
         </div>
         <div class="booking-date-fields-container col-md-2 col-md-offset-2" style="margin-top: 10px">
             <!-- Do NOT change the "booking-date-fields-container" Class -->
@@ -33,7 +34,7 @@
                 @max = 4
             })
             @Html.ValidationMessageFor(m => m.NumberOfAdults,
-                           "Enter number of adults", new { @class = "text-danger" })
+                                "Enter number of adults", new { @class = "text-danger" })
 
         </div>
 
@@ -49,7 +50,7 @@
                 @max = 4
             })
             @Html.ValidationMessageFor(m => m.NumberOfChildren,
-              "Enter number of children", new { @class = "text-danger" })
+                   "Enter number of children", new { @class = "text-danger" })
 
         </div>
 
@@ -66,7 +67,7 @@
                 @max = 3
             })
             @Html.ValidationMessageFor(m => m.NumberOfRooms,
-              "Enter number of rooms. Max 3 can be entered", new { @class = "text-danger" })
+                   "Enter number of rooms. Max 3 can be entered", new { @class = "text-danger" })
 
         </div>
         <div class="col-md-12" style="margin-top: 30px; text-align: center">

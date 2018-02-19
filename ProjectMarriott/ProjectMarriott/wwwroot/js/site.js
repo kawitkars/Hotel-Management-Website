@@ -49,6 +49,18 @@ $(document).ready(function () {
     if (activeTab) {
         $('#booking-tabs a[href="' + activeTab + '"]').tab('show');
     }
+
+    //$("#tab2").addClass('disabled');
+    //$("#tab2 a").removeAttr('data-toggle');
+
+    //$("#tab3").addClass('disabled');
+    //$("#tab3 a").removeAttr('data-toggle');
+
+    //$("#tab4").addClass('disabled');
+    //$("#tab4 a").removeAttr('data-toggle');
+
+    
+
 });
 
 
@@ -107,16 +119,17 @@ $(function () {
 //    }
 //}
 
-    //$("#IsSingleRoom").click(function checkLimit(_totalNumberOfRooms) {
-    //    $("input[name='ckb']").change(function () {
-    //        var cnt = $("input[name='ckb']:checked").length;
-    //        if (cnt > _totalNumberOfRooms) {
-    //            $(this).prop("checked", "");
-    //            document.getElementById("#displayErrorDiv").innerHTML =
-    //                _totalNumberOfRooms + " rooms has already been selected. No more rooms can be selected";
-    //        }
-    //    });
-    //});
+    $("#IsSingleRoom").click(function checkLimit() {
+        $("input[type='checkbox']").change(function () {
+            var cnt = $("input[type='checkbox']:checked").length;
+            var _totalNumberOfRooms = 1;
+            if (cnt > _totalNumberOfRooms) {
+                $(this).prop("checked", "");
+                document.getElementById("#displayErrorDiv").innerHTML =
+                    _totalNumberOfRooms + " rooms has already been selected. No more rooms can be selected";
+            }
+        });
+    });
 
 
 

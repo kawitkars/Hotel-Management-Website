@@ -4,13 +4,29 @@
 new { enctype = "multipart/form-data", id = "saveRoomForm" }))
 {
     @Html.AntiForgeryToken()
-    @Html.HiddenFor(m => m.CheckinDate)
-    @Html.HiddenFor(m => m.CheckoutDate)
-    @Html.HiddenFor(m => m.NumberOfAdults)
-    @Html.HiddenFor(m => m.NumberOfChildren)
-    @Html.HiddenFor(m => m.NumberOfRooms)
-
-
+    @if (Model != null)
+    {
+        @Html.HiddenFor(m => m.CheckinDate, Model.CheckinDate)
+        @Html.HiddenFor(m => m.CheckoutDate, Model.CheckoutDate)
+        @Html.HiddenFor(m => m.NumberOfAdults, Model.NumberOfAdults)
+        @Html.HiddenFor(m => m.NumberOfChildren, Model.NumberOfChildren)
+        @Html.HiddenFor(m => m.NumberOfRooms, Model.NumberOfRooms)
+        @*@Html.Hidden("IsSingleRoom")
+        @Html.Hidden("IsDoubleRoom")
+        @Html.Hidden("IsDeluxeOneBedroom")
+        @Html.Hidden("IsDeluxeTwoBedroom")
+        @Html.Hidden("IsRoyalSuit")
+        @Html.Hidden("IsKingSuit")*@
+        @*@if (Model.RoomDetails != null)
+            {
+                @Html.HiddenFor(m => Model.RoomDetails)
+                for (var i = 0; i < Model.RoomDetails.Count; i++)
+                {
+                    @Html.HiddenFor(x => x.RoomDetails[i].RoomType)
+                    @Html.HiddenFor(x => x.RoomDetails[i].RoomTariff)
+                }
+            }*@
+    }
 
     <div class="heading-box">
         @if (Model != null)

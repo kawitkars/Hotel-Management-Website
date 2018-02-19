@@ -38,7 +38,11 @@ namespace ProjectMarriott
 
             services.AddMvc();
 
-            services.AddSession();
+            //services.AddSession();
+
+            services.AddSession(options => {
+                options.IdleTimeout = TimeSpan.FromMinutes(60);
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

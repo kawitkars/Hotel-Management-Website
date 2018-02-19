@@ -29,7 +29,7 @@ namespace ProjectMarriott.CustomValidations
                 }
                 else
                 {
-                    return new ValidationResult("Please enter a valid date");
+                    return new ValidationResult("Please enter a valid " +  validationContext.DisplayName);
                 }
             }
             else

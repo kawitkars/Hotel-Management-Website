@@ -32,27 +32,27 @@
             <!-- The tabular structure uses the Bootstrap tab structure! -->
             <ul class="nav nav-tabs nav-justified" id="booking-tabs">
                 <!-- Booking Tabs -->
-                <li class="active">
+                <li class="active" id="tab1">
                     <!-- Add Active class for the active tab -->
-                    <a href="#booking-choose-date" data-toggle="tab" class="nav_link" data_id="1">
+                    <a href="#booking-choose-date" data-toggle="tab" class="nav_link">
                         <span class="number">1</span><!-- Tab number -->
                         <span class="title">Choose <b>Date</b></span><!-- Tab title -->
                     </a>
                 </li>
-                <li>
-                    <a href="#booking-choose-room" data-toggle="tab" class="nav_link" data_id="2">
+                <li id="tab2">
+                    <a href="#booking-choose-room" data-toggle="tab"  class="nav_link">
                         <span class="number">2</span><!-- Tab number -->
                         <span class="title">Choose <b>Room</b></span><!-- Tab title -->
                     </a>
                 </li>
-                <li>
-                    <a href="#booking-reservation" data-toggle="tab" class="nav_link" data_id="3">
+                <li id="tab3">
+                    <a href="#booking-reservation" data-toggle="tab"  class="nav_link">
                         <span class="number">3</span><!-- Tab number -->
                         <span class="title">Reservation</span><!-- Tab title -->
                     </a>
                 </li>
-                <li>
-                    <a href="#booking-confirmation" data-toggle="tab" class="nav_link" data_id="4">
+                <li  id="tab4">
+                    <a href="#booking-confirmation" data-toggle="tab"  class="nav_link">
                         <span class="number">4</span><!-- Tab number -->
                         <span class="title">Confirmation</span><!-- Tab title -->
                     </a>
@@ -72,7 +72,7 @@
                     @{Html.RenderPartial("_ReservationTab1", Model); }
                 </div>
                 <!-- Tab Contents ( Do Not Change / Remove the ID) -->
-                <div class="tab-pane fadeInUp" id="booking-choose-room">
+                <div class="tab-pane fadeInUp clearfix" id="booking-choose-room">
                     @{Html.RenderPartial("_ReservationTab2", Model); }
                 </div>
                 <!-- Tab Contents ( Do Not Change / Remove the ID) -->

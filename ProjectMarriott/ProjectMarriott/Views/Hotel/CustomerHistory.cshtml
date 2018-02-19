@@ -18,14 +18,15 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-12">
-                    <div class="invoice-title">
-                        <h2>Invoice</h2><h3 class="pull-right">Booking ID # @Model.BookingID</h3>
+                    <div class="invoice-title" style="text-align:center">
+                        <h2>Customer Booking Invoice</h2>
+                        <h3>Booking ID # @Model.BookingID</h3>
                     </div>
-                    <hr>
+                    <hr />
                     <div class="row">
-                        <div class="col-xs-6">
-                            <address>
-                                <strong>Billed To:</strong><br>
+                        <div class="col-xs-12">
+                            <address style="text-align:center">
+                                <strong style="color: brown">Customer Details:</strong><br>
                                 @Model.CustomerDetails.FirstName<br>
                                 @Model.CustomerDetails.Address.AddressLine1<br>
                                 @Model.CustomerDetails.Address.AddressLine2<br>
@@ -35,51 +36,59 @@
                             </address>
                         </div>
                     </div>
+                    <hr />
 
                     <div class="row">
-                        <div class="col-xs-6">
-                            <strong>Checkin Date:</strong><br>
-                            @Model.CheckinDate<br>
+                        <div class="col-xs-12" style="text-align:center">
+                            <strong style="color: brown">Checkin Date:</strong><br>
+                            @Model.CheckinDate.ToShortDateString()<br>
                         </div>
                     </div>
 
                     <div class="row">
-                        <div class="col-xs-6">
-                            <strong>Checkout Date:</strong><br>
-                            @Model.CheckoutDate<br>
+                        <div class="col-xs-12"  style="text-align:center">
+                            <strong style="color: brown">Checkout Date:</strong><br>
+                            @Model.CheckoutDate.ToShortDateString()<br>
                         </div>
                     </div>
 
                     <div class="row">
-                        <div class="col-xs-6">
-                            <strong>Number of children:</strong><br>
-                            @Model.NumberOfChildren<br>
-                        </div>
-                    </div>
+                        <div class="col-xs-12" style="text-align:center">
+                            <strong style="color: brown">Total Days of Stay:</strong><br>
+                            @Model.NumberOfDays<br>
+                </div>
+                </div>
 
-                    <div class="row">
-                        <div class="col-xs-6">
-                            <strong>Number of Adults:</strong><br>
-                            @Model.NumberOfChildren<br>
-                        </div>
+                <div class="row">
+                    <div class="col-xs-12" style="text-align:center">
+                        <strong style="color: brown">Number of Children:</strong><br>
+                        @Model.NumberOfChildren<br>
                     </div>
+                </div>
 
-                    <div class="row">
-                        <div class="col-xs-6">
-                            <strong>Booking Date:</strong><br>
-                            @Model.BookingDate<br>
-                        </div>
+                <div class="row">
+                    <div class="col-xs-12" style="text-align:center">
+                        <strong style="color: brown">Number of Adults:</strong><br>
+                        @Model.NumberOfAdults<br>
                     </div>
+                </div>
 
-                    <div class="row">
-                        <div class="col-xs-6">
-                            <address>
-                                <strong>Payment Method:</strong><br>
-                                Visa ending **** XXXX<br>
-                                @Model.CustomerDetails.EmailAddress
-                            </address>
-                        </div>
+                <div class="row">
+                    <div class="col-xs-12" style="text-align:center">
+                        <strong style="color: brown">Booking Date:</strong><br>
+                        @Model.BookingDate.ToShortDateString()<br>
                     </div>
+                </div>
+                <hr />
+                <div class="row">
+                    <div class="col-xs-12" style="text-align:center">
+                        <address>
+                            <strong style="color: brown">Payment Method:</strong><br>
+                            Visa ending **** XXXX<br>
+                            @Model.CustomerDetails.EmailAddress
+                        </address>
+                    </div>
+                </div>
                 </div>
             </div>
 
@@ -104,16 +113,21 @@
                                     <tbody>
                                         <!-- foreach ($order->lineItems as $line) or some such thing here -->
                                         @foreach (var roomModel in Model.RoomDetails)
-                                        {
+    {
                                     <tr>
                                         <td>@roomModel.RoomType</td>
                                         <td class="text-center">$@roomModel.RoomTariff</td>
                                         <td class="text-center">1</td>
                                         <td class="text-right">$@roomModel.RoomTariff</td>
                                     </tr>
-                                        }
+}
 
-
+                                        <tr>
+                                            <td class="no-line"></td>
+                                            <td class="no-line"></td>
+                                            <td class="no-line text-center"><strong>Total Days of Stay</strong></td>
+                                            <td class="no-line text-right">@Model.NumberOfDays</td>
+                                        </tr>
 
                                         <tr>
                                             <td class="thick-line"></td>
@@ -133,7 +147,7 @@
                                             <td class="no-line"></td>
                                             <td class="no-line"></td>
                                             <td class="no-line text-center"><strong>Total</strong></td>
-                                            <td class="no-line text-right">$@Model.TotalCost</td>
+                                            <td class="no-line text-right">$@(Model.TotalCost + 15)</td>
                                         </tr>
                                     </tbody>
                                 </table>

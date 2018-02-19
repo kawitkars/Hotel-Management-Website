@@ -57,6 +57,9 @@ namespace ProjectMarriott.Models.HotelViewModels
         [DisplayName("Number of Rooms")]
         public double NumberOfRooms { get; set; }
 
+        [DisplayName("Number of Days")]
+        public int NumberOfDays { get; set; }
+
         [DataType(DataType.Date)]
         public DateTime BookingDate { get; set; }
     }
