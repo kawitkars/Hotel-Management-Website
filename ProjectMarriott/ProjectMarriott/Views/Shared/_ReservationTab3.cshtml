@@ -10,7 +10,7 @@ new { id = "submitCustomerData" }))
       action="@Url.Action("SubmitCustomerData", "Hotel")">
 
     @Html.AntiForgeryToken()
-    if (Model != null)
+    @if (Model != null)
     {
     @Html.HiddenFor(m => m.CheckinDate, Model.CheckinDate)
     @Html.HiddenFor(m => m.CheckoutDate, Model.CheckoutDate)

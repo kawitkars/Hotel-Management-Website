@@ -13,6 +13,8 @@
             </ol>
         </div>
 
+        @if (Model != null)
+        {
         <div class="container">
             <div class="row">
                 <div class="col-xs-12">
@@ -102,14 +104,14 @@
                                     <tbody>
                                         <!-- foreach ($order->lineItems as $line) or some such thing here -->
                                         @foreach (var roomModel in Model.RoomDetails)
-    {
+                                        {
                                     <tr>
                                         <td>@roomModel.RoomType</td>
                                         <td class="text-center">$@roomModel.RoomTariff</td>
                                         <td class="text-center">1</td>
                                         <td class="text-right">$@roomModel.RoomTariff</td>
                                     </tr>
-}
+                                        }
 
 
 
@@ -140,7 +142,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>}
         </div>
 
 
