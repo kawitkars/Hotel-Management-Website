@@ -34,12 +34,12 @@ namespace ProjectMariottWebAPI.Controllers
         // GET api/Rooms/RoomType
         [HttpGet]
         [Route("api/[controller]/{id}")]
-        public async Task<IEnumerable<RoomModel>> Get(RoomType roomType)
+        public async Task<IEnumerable<RoomModel>> Get(string roomType)
         {
             return await GetAsync(roomType);
         }
 
-        private Task<IEnumerable<RoomModel>> GetAsync(RoomType roomType)
+        private Task<IEnumerable<RoomModel>> GetAsync(string roomType)
         {
             return Task.FromResult(rm.GetRoomsByRoomType(roomType));
         }
@@ -108,11 +108,11 @@ namespace ProjectMariottWebAPI.Controllers
         // DELETE api/values/5
         [HttpDelete("{id}")]
         [Route("api/[controller]/{id}")]
-        public async Task<StatusCodeResult> Delete(RoomType roomType)
+        public async Task<StatusCodeResult> Delete(string roomType)
         {
             return await DeleteAsync(roomType);
         }
-        private Task<StatusCodeResult> DeleteAsync(RoomType roomType)
+        private Task<StatusCodeResult> DeleteAsync(string roomType)
         {
             if (rm.DeleteRoom(roomType))
                 return Task.FromResult(new StatusCodeResult(200));

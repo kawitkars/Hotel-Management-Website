@@ -3,10 +3,29 @@
 @using (Html.BeginForm("SaveRoomDetails", "Hotel", FormMethod.Post,
 new { enctype = "multipart/form-data", id = "saveRoomForm" }))
 {
+    @Html.AntiForgeryToken()
     @Html.HiddenFor(m => m.CheckinDate)
     @Html.HiddenFor(m => m.CheckoutDate)
     @Html.HiddenFor(m => m.NumberOfAdults)
     @Html.HiddenFor(m => m.NumberOfChildren)
+    @Html.HiddenFor(m => m.NumberOfRooms)
+
+
+
+    <div class="heading-box">
+        @if (Model != null)
+        {
+            @if (Model.NumberOfRooms == 1)
+            {<h2>Go ahead and select any <span>@Model.NumberOfRooms</span> room</h2>}
+        else
+        { <h2>Go ahead and select any <span>@Model.NumberOfRooms</span> rooms</h2>}
+        }
+    </div>
+    <div class="main-booking-description">
+        We are glad that you chose Marriott
+    </div>
+    <div class="main-booking-description" style="color: red" id="displayErrorDiv">
+    </div>
 
     <!-- Rooms Container -->
     <div class="room-container room-grid clearfix">

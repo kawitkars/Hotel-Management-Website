@@ -15,7 +15,7 @@ namespace ProjectMariottWebAPI.Models
             return await Task.FromResult(_manager.GetAll.Count());
         }
 
-        public async Task<int> GetStudentCountByGpa(RoomType roomType)
+        public async Task<int> GetStudentCountByGpa(string roomType)
         {
             return await Task.FromResult(_manager.GetRoomsByRoomType(roomType).Count());
         }
@@ -31,7 +31,7 @@ namespace ProjectMariottWebAPI.Models
             return await Task.FromResult(_manager.GetAll.Count());
         }
 
-        public async Task<int> GetRoomCountByRoomType(RoomType roomType)
+        public async Task<int> GetRoomCountByRoomType(string roomType)
         {
             return await Task.FromResult(_manager.GetRoomsByRoomType(roomType).Count());
         }

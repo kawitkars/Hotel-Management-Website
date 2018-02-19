@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjectMarriott.CustomValidations;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -9,27 +10,33 @@ namespace ProjectMarriott.Models.HotelViewModels
 {
     public class ReservationModel
     {
+        [DisplayName("Booking ID")]
         public String BookingID { get; set; }
 
         public List<RoomModel> RoomDetails { get; set; }
 
         public CustomerModel CustomerDetails { get; set; }
-
+        
         [Required]
-        [DataType(DataType.Date)]
         [DisplayName("Checkin Date")]
+        [ValidateDateRange(6)]
+        [DataType(DataType.Date)]
         public DateTime CheckinDate { get; set; }
 
         [Required]
         [DataType(DataType.Date)]
+        [DisplayName("Checkout Date")]
+        [ValidateDateRange(6)]
         public DateTime CheckoutDate { get; set; }
 
         public String AdditionalFacilities { get; set; }
 
         [Required]
+        [DisplayName("Number of Adults")]
         public int NumberOfAdults { get; set; }
 
         [Required]
+        [DisplayName("Number of Children")]
         public int NumberOfChildren { get; set; }
 
         public bool IsSingleRoom { get; set; }
@@ -44,8 +51,10 @@ namespace ProjectMarriott.Models.HotelViewModels
 
         public bool IsKingSuit { get; set; }
 
+        [DisplayName("Total Cost")]
         public double TotalCost { get; set; }
 
+        [DisplayName("Number of Rooms")]
         public double NumberOfRooms { get; set; }
     }
 }

@@ -39,6 +39,7 @@ namespace ProjectMarriott.Controllers
             return View("Reservation", reservationModel);
         }
 
+        [Authorize]
         [HttpPost]
         public IActionResult SaveBookingDates(ReservationModel reservationModel)
         {
@@ -56,39 +57,39 @@ namespace ProjectMarriott.Controllers
                 reservationModel.CustomerDetails.Address = new AddressModel();
                 if (reservationModel.IsSingleRoom == true)
                 {
-                    var roomModel = new RoomModel(RoomType.SingleRoom, (double)RoomTariff.SingleRoom,
+                    var roomModel = new RoomModel(RoomType.SingleRoom.ToString(), (double)RoomTariff.SingleRoom,
                         true, (int)RoomsAvailable.SingleRoom);
                     reservationModel.RoomDetails.Add(roomModel);
                 }
                 if (reservationModel.IsDoubleRoom == true)
                 {
-                    var roomModel = new RoomModel(RoomType.DoubleRoom, (double)RoomTariff.DoubleRoom,
+                    var roomModel = new RoomModel(RoomType.DoubleRoom.ToString(), (double)RoomTariff.DoubleRoom,
                         true, (int)RoomsAvailable.DoubleRoom);
                     reservationModel.RoomDetails.Add(roomModel);
                 }
                 if (reservationModel.IsDeluxeOneBedroom == true)
                 {
-                    var roomModel = new RoomModel(RoomType.DeluxeOneBedroomSuite,
+                    var roomModel = new RoomModel(RoomType.DeluxeOneBedroomSuite.ToString(),
                         (double)RoomTariff.DeluxeOneBedroomSuite,
                         true, (int)RoomsAvailable.DeluxeOneBedroomSuite);
                     reservationModel.RoomDetails.Add(roomModel);
                 }
                 if (reservationModel.IsDeluxeTwoBedroom == true)
                 {
-                    var roomModel = new RoomModel(RoomType.DeluxeTwoBedroomSuite,
+                    var roomModel = new RoomModel(RoomType.DeluxeTwoBedroomSuite.ToString(),
                         (double)RoomTariff.DeluxeTwoBedroomSuite,
                         true, (int)RoomsAvailable.DeluxeTwoBedroomSuite);
                     reservationModel.RoomDetails.Add(roomModel);
                 }
                 if (reservationModel.IsRoyalSuit == true)
                 {
-                    var roomModel = new RoomModel(RoomType.RoyalSuit, (double)RoomTariff.RoyalSuit,
+                    var roomModel = new RoomModel(RoomType.RoyalSuit.ToString(), (double)RoomTariff.RoyalSuit,
                         true, (int)RoomsAvailable.RoyalSuit);
                     reservationModel.RoomDetails.Add(roomModel);
                 }
                 if (reservationModel.IsKingSuit == true)
                 {
-                    var roomModel = new RoomModel(RoomType.KingSuit, (double)RoomTariff.KingSuit,
+                    var roomModel = new RoomModel(RoomType.KingSuit.ToString(), (double)RoomTariff.KingSuit,
                         true, (int)RoomsAvailable.KingSuit);
                     reservationModel.RoomDetails.Add(roomModel);
                 }

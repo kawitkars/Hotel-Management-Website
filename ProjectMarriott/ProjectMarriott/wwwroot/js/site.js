@@ -59,21 +59,24 @@ $(function () {
         e.preventDefault();
         $("#saveDateForm").submit();
         $('#booking-tabs a[href="#booking-choose-room"]').tab('show');
-        $('#saveDateForm input').attr('disabled', 'disabled');
+        //$('#saveDateForm input').attr('disabled', 'disabled');
     });
 
+    //saveRoomForm
     $('#next2').click(function (e) {
-        e.preventDefault();
-        $("#saveRoomForm").submit();
-        $('#booking-tabs a[href="#booking-reservation"]').tab('show');
-        $('#saveRoomForm input').attr('disabled', 'disabled');
+            e.preventDefault();
+            $("#saveRoomForm").submit();
+            $('#booking-tabs a[href="#booking-reservation"]').tab('show');
+            //$('#saveRoomForm input').attr('disabled', 'disabled');
+        
     });
+          
 
     $('#next3').click(function (e) {
         e.preventDefault();
         $("#submitCustomerData").submit();
         $('#booking-tabs a[href="#booking-confirmation"]').tab('show');
-        $('#submitCustomerData input').attr('disabled', 'disabled');
+        //$('#submitCustomerData input').attr('disabled', 'disabled');
     });
 
 });
@@ -84,6 +87,52 @@ $(function () {
 }); 
 
     $('.datepicker').datepicker();
+
+    //Limit the number of times the checkbox is checked upto the number of rooms 
+    //that are selected in the reservation tab 2
+
+
+//function checkLimit(totalNumberOfRooms) {
+
+//    if (totalNumberOfRooms === document.saveRoomForm.ckb.length) {
+//        if (totalNumberOfRooms === 1) {
+//            document.getElementById("#displayErrorDiv").innerHTML =
+//                totalNumberOfRooms + " room has already been selected. No more rooms can be selected";
+//        }
+//        else {
+//            document.getElementById("#displayErrorDiv").innerHTML =
+//                totalNumberOfRooms + " rooms has already been selected. No more rooms can be selected";
+
+//        }
+//    }
+//}
+
+    //$("#IsSingleRoom").click(function checkLimit(_totalNumberOfRooms) {
+    //    $("input[name='ckb']").change(function () {
+    //        var cnt = $("input[name='ckb']:checked").length;
+    //        if (cnt > _totalNumberOfRooms) {
+    //            $(this).prop("checked", "");
+    //            document.getElementById("#displayErrorDiv").innerHTML =
+    //                _totalNumberOfRooms + " rooms has already been selected. No more rooms can be selected";
+    //        }
+    //    });
+    //});
+
+
+
+
+//$(document).ready(function checkLimit(_totalNumberOfRooms) {
+//    $("input[name='check']").change(function () {
+//        var cnt = $("input[name='check']:checked").length;
+//        if (cnt > _totalNumberOfRooms) {
+//            $(this).prop("checked", "");
+//            document.getElementById("#displayErrorDiv").innerHTML =
+//                _totalNumberOfRooms + " rooms has already been selected. No more rooms can be selected";
+//        }
+//    });
+//});
+
+
 
 //$('#saveDateBtn').click(function () {
 //    $("#saveForm").submit();

@@ -24,22 +24,22 @@ namespace ProjectMariottWebAPI.Models
                     _rooms = new List<RoomModel>()
                     { 
                         new RoomModel
-                        (RoomType.SingleRoom,(double)RoomTariff.SingleRoom, true, 
+                        (RoomType.SingleRoom.ToString(),(double)RoomTariff.SingleRoom, true, 
                         (int)RoomsAvailable.SingleRoom),
                         new RoomModel
-                        (RoomType.DoubleRoom,(double)RoomTariff.DoubleRoom, true, 
+                        (RoomType.DoubleRoom.ToString(),(double)RoomTariff.DoubleRoom, true, 
                         (int)RoomsAvailable.DoubleRoom),
                         new RoomModel
-                        (RoomType.DeluxeOneBedroomSuite,(double)RoomTariff.DeluxeOneBedroomSuite, true, 
+                        (RoomType.DeluxeOneBedroomSuite.ToString(),(double)RoomTariff.DeluxeOneBedroomSuite, true, 
                         (int)RoomsAvailable.DeluxeOneBedroomSuite),
                         new RoomModel
-                        (RoomType.DeluxeTwoBedroomSuite,(double)RoomTariff.DeluxeTwoBedroomSuite, true, 
+                        (RoomType.DeluxeTwoBedroomSuite.ToString(),(double)RoomTariff.DeluxeTwoBedroomSuite, true, 
                         (int)RoomsAvailable.DeluxeTwoBedroomSuite),
                         new RoomModel
-                        (RoomType.RoyalSuit,(double)RoomTariff.RoyalSuit, true, 
+                        (RoomType.RoyalSuit.ToString(),(double)RoomTariff.RoyalSuit, true, 
                         (int)RoomsAvailable.RoyalSuit),
                         new RoomModel
-                        (RoomType.KingSuit,(double)RoomTariff.KingSuit, true, 
+                        (RoomType.KingSuit.ToString(),(double)RoomTariff.KingSuit, true, 
                         (int)RoomsAvailable.KingSuit)
                        };
                     WriteRoomsList(_rooms);
@@ -64,7 +64,7 @@ namespace ProjectMariottWebAPI.Models
 
         public IEnumerable<RoomModel> GetAll { get { return _rooms; } }
 
-        public IEnumerable<RoomModel> GetRoomsByRoomType(RoomType _roomType)
+        public IEnumerable<RoomModel> GetRoomsByRoomType(string _roomType)
         {
             //return _students.Where(o => o.GPA.Equals(gpa)).ToList();
             return _rooms.Where(_ => _.RoomType == _roomType).ToList();
@@ -83,7 +83,7 @@ namespace ProjectMariottWebAPI.Models
             File.WriteAllText("rooms.txt", output);
         }
 
-        public bool DeleteRoom(RoomType roomType)
+        public bool DeleteRoom(string roomType)
         {
             if (!_rooms.Any(_ => _.RoomType == roomType)) return false;
             _rooms.RemoveAll(_ => _.RoomType == roomType);

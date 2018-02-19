@@ -9,7 +9,7 @@ namespace ProjectMarriott.Models.HotelViewModels
 {
     public class RoomModel
     {
-        public RoomModel(RoomType roomType, double roomTariff, bool availability, 
+        public RoomModel(string roomType, double roomTariff, bool availability, 
             int roomsAvailable)
         {
             RoomType = roomType;
@@ -19,7 +19,7 @@ namespace ProjectMarriott.Models.HotelViewModels
         }
 
         [DisplayName("Room Type")]
-        public RoomType RoomType { get; set; }
+        public string RoomType { get; set; }
 
         [DisplayName("Room Tariff")]
         public double RoomTariff { get; set; }

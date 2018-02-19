@@ -10,15 +10,16 @@
         <h5 id="customFont">Make a Reservation</h5>
     </div>
 
+
     <form class="form-inline" id="reservation-form" method="post"
           action="@Url.Action("Reservation", "Hotel")">
-
+        @Html.ValidationSummary()
         <div class="col-lg-2 form-group" style="margin-top: 10px;">
             <div>
                 @Html.Label("CheckinDate", "Check In: ")
                 @Html.TextBoxFor(m => m.CheckinDate, "",
              new { @class = "form-control datepicker", @style = "width: 100%" })
-                @Html.ValidationMessageFor(m => m.CheckinDate, "Checkin Date is required", new { @class = "text-danger" })
+                @Html.ValidationMessageFor(m => m.CheckinDate, "*Required", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -26,7 +27,7 @@
             @Html.Label("CheckoutDate", "Check Out: ")
             @Html.TextBoxFor(m => m.CheckoutDate, "",
                 new { @class = "form-control datepicker", @style = "width: 100%" })
-            @Html.ValidationMessageFor(m => m.CheckoutDate, "Checkout Date is required", new { @class = "text-danger" })
+            @Html.ValidationMessageFor(m => m.CheckoutDate, "*Required", new { @class = "text-danger" })
         </div>
 
         <div class="col-lg-2 form-group" style="margin-top: 10px;">
@@ -40,7 +41,7 @@
                 @max = 4
             })
             @Html.ValidationMessageFor(m => m.NumberOfAdults,
-                "Enter number of adults", new { @class = "text-danger" })
+                "*Required", new { @class = "text-danger" })
         </div>
 
 
@@ -55,7 +56,7 @@
                 @max = 4
             })
             @Html.ValidationMessageFor(m => m.NumberOfChildren,
-             "Enter number of children", new { @class = "text-danger" })
+             "*Required", new { @class = "text-danger" })
         </div>
 
         <div class="col-lg-2 form-group" style="margin-top: 10px;">
@@ -70,7 +71,7 @@
                 @max = 3
             })
             @Html.ValidationMessageFor(m => m.NumberOfRooms,
-             "Enter number of rooms. Max 3 can be entered", new { @class = "text-danger" })
+             "*Required", new { @class = "text-danger" })
         </div>
 
         <div class="col-lg-2 form-group" style="margin-top: 10px;">

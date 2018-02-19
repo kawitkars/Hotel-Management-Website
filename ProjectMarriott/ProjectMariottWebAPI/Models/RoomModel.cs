@@ -8,7 +8,7 @@ namespace ProjectMarriott.ProjectMarriottWebAPI.Models
 {
     public class RoomModel
     {
-        public RoomModel(RoomType roomType, double roomTariff, bool availability, 
+        public RoomModel(string roomType, double roomTariff, bool availability, 
             int roomsAvailable)
         {
             RoomType = roomType;
@@ -17,7 +17,7 @@ namespace ProjectMarriott.ProjectMarriottWebAPI.Models
             RoomsAvailable = roomsAvailable;
         }
 
-        public RoomType RoomType { get; set; }
+        public string RoomType { get; set; }
 
         public double RoomTariff { get; set; }
 
