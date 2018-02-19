@@ -3,6 +3,9 @@
 @*@using (Html.BeginForm("SubmitCustomerData", "Hotel", FormMethod.Post,
 new { id = "submitCustomerData" }))
 {*@
+
+@if (Model != null)
+{
 <form class="form" id="submitCustomerData" method="post"
       action="@Url.Action("SubmitCustomerData", "Hotel")">
 
@@ -14,9 +17,10 @@ new { id = "submitCustomerData" }))
     @Html.HiddenFor(m => m.NumberOfAdults, Model.NumberOfAdults)
     @Html.HiddenFor(m => m.NumberOfChildren, Model.NumberOfChildren)
     @Html.HiddenFor(m => m.TotalCost, Model.TotalCost)
+
     if (Model.RoomDetails != null)
     {
-    @Html.HiddenFor(m => m.RoomDetails)
+    @Html.HiddenFor(m => m.RoomDetails, Model.RoomDetails)
     @*for (var i = 0; i < Model.RoomDetails.Count; i++)
     {
         @Html.HiddenFor(m => m.RoomDetails[i].RoomType)
@@ -78,15 +82,15 @@ new { id = "submitCustomerData" }))
             <div class="field-container">
                 @Html.Label("FirstName", "First Name: ")
                 @Html.TextBoxFor(m => m.CustomerDetails.FirstName,
-                                                      new
-                                                      {
-                                                          @class = "form-control",
-                                                          @placeholder = "First Name",
-                                                          @style = "width: 100%"
-                                                      })<!-- First Name Field -->
+                                               new
+                                               {
+                                                   @class = "form-control",
+                                                   @placeholder = "First Name",
+                                                   @style = "width: 100%"
+                                               })<!-- First Name Field -->
                 @Html.ValidationMessageFor(m => m.CustomerDetails.FirstName,
-                                                          "First Name is required",
-                                                          new { @class = "text-danger" })
+                                                   "First Name is required",
+                                                   new { @class = "text-danger" })
             </div>
         </div>
 
@@ -94,45 +98,45 @@ new { id = "submitCustomerData" }))
             <div class="field-container">
                 @Html.Label("LastName", "Last Name: ")
                 @Html.TextBoxFor(m => m.CustomerDetails.LastName,
-                                                                                 new
-                                                                                 {
-                                                                                     @class = "form-control",
-                                                                                     @placeholder = "Last Name",
-                                                                                     @style = "width: 100%"
-                                                                                 })<!-- Last Name Field -->
+                                                                          new
+                                                                          {
+                                                                              @class = "form-control",
+                                                                              @placeholder = "Last Name",
+                                                                              @style = "width: 100%"
+                                                                          })<!-- Last Name Field -->
                 @Html.ValidationMessageFor(m => m.CustomerDetails.LastName,
-                                                          "Last Name is required",
-                                                          new { @class = "text-danger" })
+                                                   "Last Name is required",
+                                                   new { @class = "text-danger" })
             </div>
         </div>
         <div class="col-md-8">
             <div class="field-container">
                 @Html.Label("EmailAddress", "Email Address: ")
                 @Html.TextBoxFor(m => m.CustomerDetails.EmailAddress,
-                                                   new
-                                                   {
-                                                       @class = "form-control",
-                                                       @placeholder = "ex. abc@xyz.com",
-                                                       @style = "width: 100%"
-                                                   })<!-- Email Field -->
+                                            new
+                                            {
+                                                @class = "form-control",
+                                                @placeholder = "ex. abc@xyz.com",
+                                                @style = "width: 100%"
+                                            })<!-- Email Field -->
                 @Html.ValidationMessageFor(m => m.CustomerDetails.EmailAddress,
-                       "Last Name is required",
-                       new { @class = "text-danger" })
+                "Last Name is required",
+                new { @class = "text-danger" })
             </div>
         </div>
         <div class="col-md-8">
             <div class="field-container">
                 @Html.Label("PhoneNumber", "Phone Number: ")
                 @Html.TextBoxFor(m => m.CustomerDetails.PhoneNumber,
-                                                new
-                                                {
-                                                    @class = "form-control",
-                                                    @placeholder = "XXXXXXXXXX",
-                                                    @style = "width: 100%"
-                                                })<!-- Phone Field -->
+                                         new
+                                         {
+                                             @class = "form-control",
+                                             @placeholder = "XXXXXXXXXX",
+                                             @style = "width: 100%"
+                                         })<!-- Phone Field -->
                 @Html.ValidationMessageFor(m => m.CustomerDetails.PhoneNumber,
-               "Last Name is required",
-               new { @class = "text-danger" })
+        "Last Name is required",
+        new { @class = "text-danger" })
             </div>
         </div>
 
@@ -140,61 +144,61 @@ new { id = "submitCustomerData" }))
             @Html.Label("Address", "Address: ")
             <div class="field-container">
                 @Html.TextBoxFor(m => m.CustomerDetails.Address.AddressLine1,
-                                                    new
-                                                    {
-                                                        @class = "form-control",
-                                                        @placeholder = "Address Line 1",
-                                                        @style = "width: 100%"
-                                                    })<!-- Address Line1 Field -->
+                                             new
+                                             {
+                                                 @class = "form-control",
+                                                 @placeholder = "Address Line 1",
+                                                 @style = "width: 100%"
+                                             })<!-- Address Line1 Field -->
                 @Html.ValidationMessageFor(m => m.CustomerDetails.Address.AddressLine1,
-                                                   "Address Line 1 is required",
-                                                   new { @class = "text-danger" })
+                                            "Address Line 1 is required",
+                                            new { @class = "text-danger" })
             </div>
             <div class="field-container">
                 @Html.TextBoxFor(m => m.CustomerDetails.Address.AddressLine2,
-                                                           new
-                                                           {
-                                                               @class = "form-control",
-                                                               @placeholder = "Address Line 2(optional)",
-                                                               @style = "width: 100%"
-                                                           })<!-- Address Line2 Field -->
-            </div>
-            <div class="field-container">
-                @Html.TextBoxFor(m => m.CustomerDetails.Address.State,
                                                     new
                                                     {
                                                         @class = "form-control",
-                                                        @placeholder = "City",
+                                                        @placeholder = "Address Line 2(optional)",
                                                         @style = "width: 100%"
-                                                    })<!-- City Field -->
+                                                    })<!-- Address Line2 Field -->
+            </div>
+            <div class="field-container">
+                @Html.TextBoxFor(m => m.CustomerDetails.Address.State,
+                                             new
+                                             {
+                                                 @class = "form-control",
+                                                 @placeholder = "City",
+                                                 @style = "width: 100%"
+                                             })<!-- City Field -->
                 <!-- City Field -->
                 @Html.ValidationMessageFor(m => m.CustomerDetails.Address.City,
-                                                   "City is required",
-                                                   new { @class = "text-danger" })
+                                            "City is required",
+                                            new { @class = "text-danger" })
             </div>
             <div class="field-container">
                 @Html.TextBoxFor(m => m.CustomerDetails.Address.State,
-                                                    new
-                                                    {
-                                                        @class = "form-control",
-                                                        @placeholder = "State",
-                                                        @style = "width: 100%"
-                                                    })<!-- State Field -->
+                                             new
+                                             {
+                                                 @class = "form-control",
+                                                 @placeholder = "State",
+                                                 @style = "width: 100%"
+                                             })<!-- State Field -->
                 @Html.ValidationMessageFor(m => m.CustomerDetails.Address.State,
-                                                   "State is required",
-                                                   new { @class = "text-danger" })
+                                            "State is required",
+                                            new { @class = "text-danger" })
             </div>
             <div class="field-container">
                 @Html.TextBoxFor(m => m.CustomerDetails.Address.ZipCode,
-                                                    new
-                                                    {
-                                                        @class = "form-control",
-                                                        @placeholder = "Zip Code",
-                                                        @style = "width: 100%"
-                                                    })<!-- Zip Code Field -->
+                                             new
+                                             {
+                                                 @class = "form-control",
+                                                 @placeholder = "Zip Code",
+                                                 @style = "width: 100%"
+                                             })<!-- Zip Code Field -->
                 @Html.ValidationMessageFor(m => m.CustomerDetails.Address.ZipCode,
-                                                   "Zip Code is required",
-                                                   new { @class = "text-danger" })
+                                            "Zip Code is required",
+                                            new { @class = "text-danger" })
             </div>
         </div>
 
@@ -208,3 +212,4 @@ new { id = "submitCustomerData" }))
     <!-- End of Guest Info form -->
     @*  }*@
     </form>
+}

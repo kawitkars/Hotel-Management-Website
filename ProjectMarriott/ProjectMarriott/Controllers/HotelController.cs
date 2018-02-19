@@ -120,6 +120,7 @@ namespace ProjectMarriott.Controllers
             {
                 //Generate a booking ID 
                 reservationModel.BookingID = HelperMethods.HelperMethods.RandomString(10);
+                reservationModel.BookingDate = DateTime.Today;
             }
 
             HttpContext.Session.SetObjectAsJson("ReservationModel", reservationModel);
