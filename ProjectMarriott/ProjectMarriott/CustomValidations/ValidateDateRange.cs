@@ -25,11 +25,17 @@ namespace ProjectMarriott.CustomValidations
 
                 if (now <= date && date < futureDate)
                 {
-                    return null;
+                    return ValidationResult.Success;
+                }
+                else
+                {
+                    return new ValidationResult("Please enter a valid date");
                 }
             }
-
-            return new ValidationResult(this.FormatErrorMessage(this.ErrorMessage));
+            else
+            {
+                return new ValidationResult("" + validationContext.DisplayName + " is required");
+            }
         }
     }
 }
